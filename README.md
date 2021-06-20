@@ -1,2 +1,2 @@
 # TMSFlutter
-A timesheet management system for institutions
+A timesheet management system for institutions.
