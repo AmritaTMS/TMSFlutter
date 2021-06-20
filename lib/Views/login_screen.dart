@@ -66,7 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             alignment: Alignment.bottomCenter,
                             children: [
                               FractionallySizedBox(
-                                heightFactor: 0.89,
+                                heightFactor: 0.94,
                                 child: Card(
                                   elevation: 2,
                                   color: kFrost,
@@ -89,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                               ),
                                               Padding(
                                                 padding: const EdgeInsets.only(
-                                                    top: 24.0),
+                                                    top: 48.0),
                                                 child: TextFormField(
                                                   cursorColor: kCastelon,
                                                   decoration: InputDecoration(
@@ -183,7 +183,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                               ),
                                               Padding(
                                                 padding: const EdgeInsets.only(
-                                                    top: 8.0),
+                                                    top: 24.0),
                                                 child: Row(
                                                   children: [
                                                     Checkbox(
@@ -215,15 +215,22 @@ class _LoginScreenState extends State<LoginScreen> {
                                                       MainAxisAlignment
                                                           .spaceBetween,
                                                   children: [
-                                                    TextButton(
-                                                      onPressed: () {},
-                                                      child: Text(
-                                                        "Forgot Password",
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .button!
-                                                            .copyWith(
-                                                                color: kMatte),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              left: 6.0),
+                                                      child: TextButton(
+                                                        onPressed: () {},
+                                                        child: Text(
+                                                          "Forgot Password",
+                                                          style: Theme.of(
+                                                                  context)
+                                                              .textTheme
+                                                              .button!
+                                                              .copyWith(
+                                                                  color:
+                                                                      kMatte),
+                                                        ),
                                                       ),
                                                     ),
                                                     ElevatedButton(
@@ -273,8 +280,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 child: Container(
                                   alignment: Alignment.topLeft,
                                   child: FractionallySizedBox(
-                                    heightFactor: 0.16,
-                                    widthFactor: 0.4,
+                                    heightFactor: 0.10,
+                                    widthFactor: 0.3,
                                     child: Image.asset("images/logo.png"),
                                   ),
                                 ),
