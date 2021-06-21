@@ -8,6 +8,8 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen>
     with SingleTickerProviderStateMixin {
+  late AnimationController animation;
+  late Animation<Offset> _offsetAnimation;
   bool _isHidden = false, _staySigned = true;
   String _username = '', _password = '';
   final _formKey = GlobalKey<FormState>();
@@ -15,6 +17,24 @@ class _LoginScreenState extends State<LoginScreen>
   @override
   void initState() {
     super.initState();
+    animation = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 3140),
+    );
+    _offsetAnimation = Tween<Offset>(
+      begin: const Offset(0.0, 0.0),
+      end: const Offset(0.0, 0.06),
+    ).animate(CurvedAnimation(
+      parent: animation,
+      curve: Curves.easeInOutCubic,
+    ));
+    animation.repeat(reverse: true);
+  }
+
+  @override
+  void dispose() {
+    animation.dispose();
+    super.dispose();
   }
 
   @override
@@ -66,15 +86,17 @@ class _LoginScreenState extends State<LoginScreen>
                         Expanded(
                           flex: 3,
                           child: Center(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                fit: BoxFit.fitWidth,
-                                alignment: Alignment.topCenter,
-                                image: AssetImage(
-                                  "images/rocket.png",
-                                ),
-                              )),
+                            child: SlideTransition(
+                              position: _offsetAnimation,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                  fit: BoxFit.fitWidth,
+                                  image: AssetImage(
+                                    "images/rocket.png",
+                                  ),
+                                )),
+                              ),
                             ),
                           ),
                         ),
