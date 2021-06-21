@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:tms/constants.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -52,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
             color: kGlacier,
             child: LayoutBuilder(
               builder: (BuildContext context, BoxConstraints constraints) {
-                if (constraints.maxWidth > 1240) {
+                if (constraints.maxWidth > 1239) {
                   return Row(
                     children: [
                       Expanded(
