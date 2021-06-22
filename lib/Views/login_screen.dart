@@ -20,7 +20,7 @@ class _LoginScreenState extends State<LoginScreen>
     super.initState();
     animation = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 2140),
+      duration: Duration(milliseconds: 2048),
     );
     _offsetAnimation = Tween<Offset>(
       begin: const Offset(0.0, 0.0),
@@ -257,7 +257,7 @@ class _LoginScreenState extends State<LoginScreen>
                                                 Padding(
                                                   padding:
                                                       const EdgeInsets.only(
-                                                          top: 56.0),
+                                                          top: 32.0),
                                                   child: Row(
                                                     mainAxisAlignment:
                                                         MainAxisAlignment
@@ -300,11 +300,11 @@ class _LoginScreenState extends State<LoginScreen>
                                                               const EdgeInsets
                                                                       .symmetric(
                                                                   horizontal:
-                                                                      16.0,
+                                                                      24.0,
                                                                   vertical:
                                                                       12.0),
                                                           child: Text(
-                                                            'Sign in',
+                                                            'Next',
                                                             style: Theme.of(
                                                                     context)
                                                                 .textTheme
@@ -317,7 +317,27 @@ class _LoginScreenState extends State<LoginScreen>
                                                       ),
                                                     ],
                                                   ),
-                                                )
+                                                ),
+                                                Center(
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 32.0),
+                                                    child: TextButton(
+                                                      onPressed: () {
+                                                        //TODO: Implement attribution page
+                                                      },
+                                                      child: Text(
+                                                        "© Copyright 2021. Amrita Vishwa Vidyapeetham.",
+                                                        style: Theme.of(context)
+                                                            .textTheme
+                                                            .overline!
+                                                            .copyWith(
+                                                                color: kMatte),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
                                               ],
                                             ),
                                           ),
