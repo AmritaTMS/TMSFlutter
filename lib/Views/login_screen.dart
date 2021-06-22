@@ -10,6 +10,7 @@ class _LoginScreenState extends State<LoginScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController animation;
   late Animation<Offset> _offsetAnimation;
+  late Animation<double> tween;
   bool _isHidden = false, _staySigned = true;
   String _username = '', _password = '';
   final _formKey = GlobalKey<FormState>();
@@ -19,14 +20,18 @@ class _LoginScreenState extends State<LoginScreen>
     super.initState();
     animation = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 3140),
+      duration: Duration(milliseconds: 2140),
     );
     _offsetAnimation = Tween<Offset>(
       begin: const Offset(0.0, 0.0),
-      end: const Offset(0.0, 0.06),
+      end: const Offset(-0.06, 0.04),
     ).animate(CurvedAnimation(
       parent: animation,
-      curve: Curves.easeInOutCubic,
+      curve: Curves.easeInOut,
+    ));
+    tween = Tween<double>(begin: 0, end: 0.01).animate(CurvedAnimation(
+      parent: animation,
+      curve: Curves.easeInOut,
     ));
     animation.repeat(reverse: true);
   }
@@ -86,17 +91,34 @@ class _LoginScreenState extends State<LoginScreen>
                         Expanded(
                           flex: 3,
                           child: Center(
-                            child: SlideTransition(
-                              position: _offsetAnimation,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                  fit: BoxFit.fitWidth,
-                                  image: AssetImage(
-                                    "images/rocket.png",
+                            child: Stack(
+                              children: [
+                                RotationTransition(
+                                  turns:tween,
+                                  child: SlideTransition(
+                                    position: _offsetAnimation,
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                        fit: BoxFit.fitWidth,
+                                        image: AssetImage(
+                                          "images/rocket.png",
+                                        ),
+                                      )),
+                                    ),
                                   ),
-                                )),
-                              ),
+                                ),
+                                Container(
+                                      decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                        fit: BoxFit.fitWidth,
+                                        alignment: Alignment.center,
+                                        image: AssetImage(
+                                          "images/clouds.png",
+                                        ),
+                                      )),
+                                    )
+                              ],
                             ),
                           ),
                         ),
@@ -141,7 +163,7 @@ class _LoginScreenState extends State<LoginScreen>
                                                           Icons
                                                               .account_circle_outlined,
                                                           color: kCastelon)),
-                                                ),
+                                                          ),
                                                 Padding(
                                                   padding:
                                                       const EdgeInsets.only(
@@ -236,7 +258,7 @@ class _LoginScreenState extends State<LoginScreen>
                                                 Padding(
                                                   padding:
                                                       const EdgeInsets.only(
-                                                          top: 24.0),
+                                                          top: 56.0),
                                                   child: Row(
                                                     mainAxisAlignment:
                                                         MainAxisAlignment
@@ -306,13 +328,11 @@ class _LoginScreenState extends State<LoginScreen>
                                   ),
                                 ),
                                 Positioned.fill(
+                                  left: 20,
                                   child: Container(
                                     alignment: Alignment.topLeft,
-                                    child: FractionallySizedBox(
-                                      heightFactor: 0.10,
-                                      widthFactor: 0.3,
-                                      child: Image.asset("images/logo.png"),
-                                    ),
+                                    child: Image.asset("images/logo.png",width: 50,height: 50,),
+                                    
                                   ),
                                 ),
                               ],
