@@ -29,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen>
       parent: animation,
       curve: Curves.easeInOut,
     ));
-    tween = Tween<double>(begin: 0, end: 0.01).animate(CurvedAnimation(
+    tween = Tween<double>(begin: 0, end: 0.015).animate(CurvedAnimation(
       parent: animation,
       curve: Curves.easeInOut,
     ));
@@ -94,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen>
                             child: Stack(
                               children: [
                                 RotationTransition(
-                                  turns:tween,
+                                  turns: tween,
                                   child: SlideTransition(
                                     position: _offsetAnimation,
                                     child: Container(
@@ -109,15 +109,14 @@ class _LoginScreenState extends State<LoginScreen>
                                   ),
                                 ),
                                 Container(
-                                      decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                        fit: BoxFit.fitWidth,
-                                        alignment: Alignment.center,
-                                        image: AssetImage(
-                                          "images/clouds.png",
-                                        ),
-                                      )),
-                                    )
+                                  decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                    fit: BoxFit.fitWidth,
+                                    image: AssetImage(
+                                      "images/clouds.png",
+                                    ),
+                                  )),
+                                )
                               ],
                             ),
                           ),
@@ -163,7 +162,7 @@ class _LoginScreenState extends State<LoginScreen>
                                                           Icons
                                                               .account_circle_outlined,
                                                           color: kCastelon)),
-                                                          ),
+                                                ),
                                                 Padding(
                                                   padding:
                                                       const EdgeInsets.only(
@@ -305,7 +304,7 @@ class _LoginScreenState extends State<LoginScreen>
                                                                   vertical:
                                                                       12.0),
                                                           child: Text(
-                                                            'Login',
+                                                            'Sign in',
                                                             style: Theme.of(
                                                                     context)
                                                                 .textTheme
@@ -331,8 +330,11 @@ class _LoginScreenState extends State<LoginScreen>
                                   left: 20,
                                   child: Container(
                                     alignment: Alignment.topLeft,
-                                    child: Image.asset("images/logo.png",width: 50,height: 50,),
-                                    
+                                    child: Image.asset(
+                                      "images/logo.png",
+                                      width: 50,
+                                      height: 50,
+                                    ),
                                   ),
                                 ),
                               ],
