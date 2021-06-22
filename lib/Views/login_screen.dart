@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tms/constants.dart';
+import 'package:tms/Widgets/login_field.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -124,240 +125,184 @@ class _LoginScreenState extends State<LoginScreen>
                         Expanded(
                           flex: 2,
                           child: FractionallySizedBox(
-                            heightFactor: 0.72,
-                            widthFactor: 0.8,
-                            child: Stack(
-                              alignment: Alignment.bottomCenter,
-                              children: [
-                                FractionallySizedBox(
-                                  heightFactor: 0.94,
-                                  child: Card(
-                                    elevation: 2,
+                            widthFactor: 0.75,
+                            child: SingleChildScrollView(
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Card(
+                                    elevation: 1,
                                     color: kPowder,
                                     child: Center(
-                                      child: SingleChildScrollView(
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(32.0),
-                                          child: Form(
-                                            key: _formKey,
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  "Sign in",
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .headline5!
-                                                      .copyWith(
-                                                          color: kCastelon),
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 48.0, horizontal: 32.0),
+                                        child: Form(
+                                          key: _formKey,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                "Sign in",
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .headline5!
+                                                    .copyWith(color: kCastelon),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    top: 48.0),
+                                                child: LoginField(
+                                                  'Username',
+                                                  Icon(
+                                                      Icons
+                                                          .account_circle_outlined,
+                                                      color: kCastelon),
+                                                  true,
+                                                  (value) {
+                                                    _username = value;
+                                                  },
                                                 ),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          top: 48.0),
-                                                  child: LoginField(
-                                                      'Username',
-                                                      Icon(
-                                                          Icons
-                                                              .account_circle_outlined,
-                                                          color: kCastelon)),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    top: 24.0),
+                                                child: LoginField(
+                                                  'Password',
+                                                  InkWell(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        _isHidden = !_isHidden;
+                                                      });
+                                                    },
+                                                    child: Icon(
+                                                        _isHidden
+                                                            ? Icons
+                                                                .visibility_outlined
+                                                            : Icons
+                                                                .visibility_off_outlined,
+                                                        color: kCastelon),
+                                                  ),
+                                                  _isHidden,
+                                                  (value) {
+                                                    _password = value;
+                                                  },
                                                 ),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          top: 24.0),
-                                                  child: TextFormField(
-                                                    cursorColor: kCastelon,
-                                                    decoration: InputDecoration(
-                                                      //TODO: Error border and error color
-                                                      focusedBorder: OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                                  color:
-                                                                      kCastelon,
-                                                                  width: 2),
-                                                          borderRadius:
-                                                              BorderRadius.all(
-                                                                  Radius
-                                                                      .circular(
-                                                                          8.0))),
-                                                      enabledBorder: OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                                  color:
-                                                                      kCamblue,
-                                                                  width: 2),
-                                                          borderRadius:
-                                                              BorderRadius.all(
-                                                                  Radius
-                                                                      .circular(
-                                                                          8.0))),
-                                                      border: OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                                  color:
-                                                                      kCamblue,
-                                                                  width: 2),
-                                                          borderRadius:
-                                                              BorderRadius.all(
-                                                                  Radius
-                                                                      .circular(
-                                                                          8.0))),
-                                                      labelText: 'Password',
-                                                      labelStyle: TextStyle(
-                                                          color: kMatte),
-                                                      suffixIcon: InkWell(
-                                                        onTap: () {
-                                                          setState(() {
-                                                            _isHidden =
-                                                                !_isHidden;
-                                                          });
-                                                        },
-                                                        child: Icon(
-                                                            _isHidden
-                                                                ? Icons
-                                                                    .visibility_outlined
-                                                                : Icons
-                                                                    .visibility_off_outlined,
-                                                            color: kCastelon),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    top: 32.0),
+                                                child: Row(
+                                                  children: [
+                                                    Checkbox(
+                                                      activeColor: kCastelon,
+                                                      value: _staySigned,
+                                                      onChanged: (value) {
+                                                        setState(() {
+                                                          _staySigned = value!;
+                                                        });
+                                                      },
+                                                      side: BorderSide(
+                                                        color: kCastelon,
+                                                        width: 2,
                                                       ),
                                                     ),
-                                                    obscureText: !_isHidden,
-                                                  ),
+                                                    Text(
+                                                      "Keep me signed in",
+                                                      style: TextStyle(
+                                                          color: kMatte),
+                                                    ),
+                                                  ],
                                                 ),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          top: 24.0),
-                                                  child: Row(
-                                                    children: [
-                                                      Checkbox(
-                                                        activeColor: kCastelon,
-                                                        value: _staySigned,
-                                                        onChanged: (value) {
-                                                          setState(() {
-                                                            _staySigned =
-                                                                value!;
-                                                          });
-                                                        },
-                                                        side: BorderSide(
-                                                          color: kCastelon,
-                                                          width: 2,
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    top: 32.0),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              left: 6.0),
+                                                      child: TextButton(
+                                                        onPressed: () {},
+                                                        child: Text(
+                                                          "Forgot Password",
+                                                          style: Theme.of(
+                                                                  context)
+                                                              .textTheme
+                                                              .button!
+                                                              .copyWith(
+                                                                  color:
+                                                                      kMatte),
                                                         ),
                                                       ),
-                                                      Text(
-                                                        "Keep me signed in",
-                                                        style: TextStyle(
-                                                            color: kMatte),
+                                                    ),
+                                                    ElevatedButton(
+                                                      style: ElevatedButton
+                                                          .styleFrom(
+                                                        primary: kCastelon,
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                        ),
                                                       ),
-                                                    ],
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          top: 32.0),
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
-                                                    children: [
-                                                      Padding(
+                                                      onPressed: () {},
+                                                      child: Padding(
                                                         padding:
                                                             const EdgeInsets
-                                                                    .only(
-                                                                left: 6.0),
-                                                        child: TextButton(
-                                                          onPressed: () {},
-                                                          child: Text(
-                                                            "Forgot Password",
-                                                            style: Theme.of(
-                                                                    context)
-                                                                .textTheme
-                                                                .button!
-                                                                .copyWith(
-                                                                    color:
-                                                                        kMatte),
-                                                          ),
+                                                                    .symmetric(
+                                                                horizontal:
+                                                                    24.0,
+                                                                vertical: 12.0),
+                                                        child: Text(
+                                                          'Next',
+                                                          style: Theme.of(
+                                                                  context)
+                                                              .textTheme
+                                                              .button!
+                                                              .copyWith(
+                                                                  color:
+                                                                      kGlacier),
                                                         ),
-                                                      ),
-                                                      ElevatedButton(
-                                                        style: ElevatedButton
-                                                            .styleFrom(
-                                                          primary: kCastelon,
-                                                          shape:
-                                                              RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        8.0),
-                                                          ),
-                                                        ),
-                                                        onPressed: () {},
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                      .symmetric(
-                                                                  horizontal:
-                                                                      24.0,
-                                                                  vertical:
-                                                                      12.0),
-                                                          child: Text(
-                                                            'Next',
-                                                            style: Theme.of(
-                                                                    context)
-                                                                .textTheme
-                                                                .button!
-                                                                .copyWith(
-                                                                    color:
-                                                                        kGlacier),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                                Center(
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            top: 32.0),
-                                                    child: TextButton(
-                                                      onPressed: () {
-                                                        //TODO: Implement attribution page
-                                                      },
-                                                      child: Text(
-                                                        "© Copyright 2021. Amrita Vishwa Vidyapeetham.",
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .overline!
-                                                            .copyWith(
-                                                                color: kMatte),
                                                       ),
                                                     ),
-                                                  ),
+                                                  ],
                                                 ),
-                                              ],
-                                            ),
+                                              ),
+                                            ],
                                           ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                ),
-                                Positioned.fill(
-                                  left: 20,
-                                  child: Container(
-                                    alignment: Alignment.topLeft,
-                                    child: Image.asset(
-                                      "images/logo.png",
-                                      width: 50,
-                                      height: 50,
+                                  Center(
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(top: 32.0),
+                                      child: TextButton(
+                                        onPressed: () {
+                                          //TODO: Implement attribution page
+                                        },
+                                        child: Text(
+                                          "© 2021. Amrita Vishwa Vidyapeetham.",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .overline!
+                                              .copyWith(color: kMatte),
+                                        ),
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -374,36 +319,6 @@ class _LoginScreenState extends State<LoginScreen>
             },
           ),
         ),
-      ),
-    );
-  }
-}
-
-class LoginField extends StatelessWidget {
-  final String text;
-  final Icon icon;
-  LoginField(this.text, this.icon);
-
-  @override
-  Widget build(BuildContext context) {
-    return TextFormField(
-      cursorColor: kCastelon,
-      decoration: InputDecoration(
-        //TODO: Error border and error color
-        filled: true,
-        fillColor: kCream,
-        focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: kCastelon, width: 2),
-            borderRadius: BorderRadius.all(Radius.circular(8.0))),
-        enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: kCamblue, width: 2),
-            borderRadius: BorderRadius.all(Radius.circular(8.0))),
-        border: OutlineInputBorder(
-            borderSide: BorderSide(color: kCamblue, width: 2),
-            borderRadius: BorderRadius.all(Radius.circular(8.0))),
-        labelText: text,
-        labelStyle: TextStyle(color: kMatte),
-        suffixIcon: icon,
       ),
     );
   }
