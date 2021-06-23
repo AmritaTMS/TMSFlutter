@@ -162,7 +162,16 @@ class _LoginScreenState extends State<LoginScreen>
                                                       color: kCastelon),
                                                   true,
                                                   (value) {
+                                                    setState(() {
+                                                      _formKey.currentState!
+                                                          .validate();
+                                                    });
                                                     _username = value;
+                                                  },
+                                                  (_username) {
+                                                    if (_username!.isEmpty) {
+                                                      return '* Please enter a username';
+                                                    }
                                                   },
                                                 ),
                                               ),
@@ -187,7 +196,16 @@ class _LoginScreenState extends State<LoginScreen>
                                                   ),
                                                   _isHidden,
                                                   (value) {
+                                                    setState(() {
+                                                      _formKey.currentState!
+                                                          .validate();
+                                                    });
                                                     _password = value;
+                                                  },
+                                                  (_password) {
+                                                    if (_password!.isEmpty) {
+                                                      return '* Please enter a password';
+                                                    }
                                                   },
                                                 ),
                                               ),
@@ -255,7 +273,12 @@ class _LoginScreenState extends State<LoginScreen>
                                                                       8.0),
                                                         ),
                                                       ),
-                                                      onPressed: () {},
+                                                      onPressed: () {
+                                                        setState(() {
+                                                          _formKey.currentState!
+                                                              .validate();
+                                                        });
+                                                      },
                                                       child: Padding(
                                                         padding:
                                                             const EdgeInsets
@@ -348,7 +371,15 @@ class _LoginScreenState extends State<LoginScreen>
                                               color: kCastelon),
                                           true,
                                           (value) {
+                                            setState(() {
+                                              _formKey.currentState!.validate();
+                                            });
                                             _username = value;
+                                          },
+                                          (_username) {
+                                            if (_username!.isEmpty) {
+                                              return '* Please enter a username';
+                                            }
                                           },
                                         ),
                                       ),
@@ -372,7 +403,15 @@ class _LoginScreenState extends State<LoginScreen>
                                           ),
                                           _isHidden,
                                           (value) {
+                                            setState(() {
+                                              _formKey.currentState!.validate();
+                                            });
                                             _password = value;
+                                          },
+                                          (_password) {
+                                            if (_password!.isEmpty) {
+                                              return '* Please enter a password';
+                                            }
                                           },
                                         ),
                                       ),
@@ -431,7 +470,12 @@ class _LoginScreenState extends State<LoginScreen>
                                                           8.0),
                                                 ),
                                               ),
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                setState(() {
+                                                  _formKey.currentState!
+                                                      .validate();
+                                                });
+                                              },
                                               child: Padding(
                                                 padding:
                                                     const EdgeInsets.symmetric(
@@ -511,7 +555,15 @@ class _LoginScreenState extends State<LoginScreen>
                                             color: kCastelon),
                                         true,
                                         (value) {
+                                          setState(() {
+                                            _formKey.currentState!.validate();
+                                          });
                                           _username = value;
+                                        },
+                                        (_username) {
+                                          if (_username!.isEmpty) {
+                                            return '* Please enter a username';
+                                          }
                                         },
                                       ),
                                     ),
@@ -534,7 +586,15 @@ class _LoginScreenState extends State<LoginScreen>
                                         ),
                                         _isHidden,
                                         (value) {
+                                          setState(() {
+                                            _formKey.currentState!.validate();
+                                          });
                                           _password = value;
+                                        },
+                                        (_password) {
+                                          if (_password!.isEmpty) {
+                                            return '* Please enter a password';
+                                          }
                                         },
                                       ),
                                     ),
@@ -575,7 +635,11 @@ class _LoginScreenState extends State<LoginScreen>
                                                   BorderRadius.circular(8.0),
                                             ),
                                           ),
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            setState(() {
+                                              _formKey.currentState!.validate();
+                                            });
+                                          },
                                           child: Padding(
                                             padding: EdgeInsets.symmetric(
                                                 vertical: 12.0),
