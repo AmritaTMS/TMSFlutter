@@ -25,6 +25,16 @@ extension Graph on GraphQLClient {
     return this.query(QueryOptions(
       document: gql(readCharacter),
       fetchPolicy: FetchPolicy.noCache,
+      errorPolicy: ErrorPolicy.all,
+    ));
+  }
+
+  Future mutationA(String query) {
+    final String readCharacter = query;
+    return this.mutate(MutationOptions(
+      document: gql(readCharacter),
+      fetchPolicy: FetchPolicy.noCache,
+      errorPolicy: ErrorPolicy.all,
     ));
   }
 }

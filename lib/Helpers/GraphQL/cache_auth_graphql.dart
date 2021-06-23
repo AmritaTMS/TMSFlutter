@@ -1,5 +1,4 @@
 import 'package:graphql/client.dart';
-
 import 'package:tms/constants.dart';
 
 class AuthGraphQL {
@@ -21,11 +20,23 @@ class AuthGraphQL {
 }
 
 extension Graph on GraphQLClient {
-  Future queryA(String query) {
+  Future queryCA(String query) {
     final String readCharacter = query;
     return this.query(QueryOptions(
       document: gql(readCharacter),
       fetchPolicy: FetchPolicy.noCache,
+      errorPolicy: ErrorPolicy.all,
+      cacheRereadPolicy: CacheRereadPolicy.mergeOptimistic,
+    ));
+  }
+
+  Future mutationCA(String query) {
+    final String readCharacter = query;
+    return this.mutate(MutationOptions(
+      document: gql(readCharacter),
+      fetchPolicy: FetchPolicy.noCache,
+      errorPolicy: ErrorPolicy.all,
+      cacheRereadPolicy: CacheRereadPolicy.mergeOptimistic,
     ));
   }
 }
