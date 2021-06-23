@@ -84,7 +84,7 @@ class _LoginScreenState extends State<LoginScreen>
             builder: (BuildContext context, BoxConstraints constraints) {
               if (constraints.maxWidth > 1239) {
                 return Align(
-                  alignment: Alignment.topCenter,
+                  alignment: Alignment.center,
                   child: Container(
                     constraints: BoxConstraints(maxWidth: 1440, maxHeight: 810),
                     child: Row(
@@ -310,10 +310,332 @@ class _LoginScreenState extends State<LoginScreen>
                     ),
                   ),
                 );
+              } else if (constraints.maxWidth > 599) {
+                return Align(
+                  alignment: Alignment.center,
+                  child: Container(
+                    constraints: BoxConstraints(maxWidth: 500, maxHeight: 810),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Card(
+                            elevation: 1,
+                            color: kPowder,
+                            child: Center(
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 48.0, horizontal: 32.0),
+                                child: Form(
+                                  key: _formKey,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Sign in",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline5!
+                                            .copyWith(color: kCastelon),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(top: 48.0),
+                                        child: LoginField(
+                                          'Username',
+                                          Icon(Icons.account_circle_outlined,
+                                              color: kCastelon),
+                                          true,
+                                          (value) {
+                                            _username = value;
+                                          },
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(top: 24.0),
+                                        child: LoginField(
+                                          'Password',
+                                          InkWell(
+                                            onTap: () {
+                                              setState(() {
+                                                _isHidden = !_isHidden;
+                                              });
+                                            },
+                                            child: Icon(
+                                                _isHidden
+                                                    ? Icons.visibility_outlined
+                                                    : Icons
+                                                        .visibility_off_outlined,
+                                                color: kCastelon),
+                                          ),
+                                          _isHidden,
+                                          (value) {
+                                            _password = value;
+                                          },
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(top: 32.0),
+                                        child: Row(
+                                          children: [
+                                            Checkbox(
+                                              activeColor: kCastelon,
+                                              value: _staySigned,
+                                              onChanged: (value) {
+                                                setState(() {
+                                                  _staySigned = value!;
+                                                });
+                                              },
+                                              side: BorderSide(
+                                                color: kCastelon,
+                                                width: 2,
+                                              ),
+                                            ),
+                                            Text(
+                                              "Keep me signed in",
+                                              style: TextStyle(color: kMatte),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(top: 32.0),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 6.0),
+                                              child: TextButton(
+                                                onPressed: () {},
+                                                child: Text(
+                                                  "Forgot Password",
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .button!
+                                                      .copyWith(color: kMatte),
+                                                ),
+                                              ),
+                                            ),
+                                            ElevatedButton(
+                                              style: ElevatedButton.styleFrom(
+                                                primary: kCastelon,
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                              ),
+                                              onPressed: () {},
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 24.0,
+                                                        vertical: 12.0),
+                                                child: Text(
+                                                  'Next',
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .button!
+                                                      .copyWith(
+                                                          color: kGlacier),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Center(
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 32.0),
+                              child: TextButton(
+                                onPressed: () {
+                                  //TODO: Implement attribution page
+                                },
+                                child: Text(
+                                  "© 2021. Amrita Vishwa Vidyapeetham.",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .overline!
+                                      .copyWith(color: kMatte),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
               } else {
-                //TODO: PhoneView()
-                return Container(
-                  color: kCastelon,
+                return Align(
+                  alignment: Alignment.center,
+                  child: Container(
+                    constraints: BoxConstraints(maxWidth: 500, maxHeight: 810),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Center(
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 48.0, horizontal: 32.0),
+                              child: Form(
+                                key: _formKey,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Sign in",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headline5!
+                                          .copyWith(color: kCastelon),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 48.0),
+                                      child: LoginField(
+                                        'Username',
+                                        Icon(Icons.account_circle_outlined,
+                                            color: kCastelon),
+                                        true,
+                                        (value) {
+                                          _username = value;
+                                        },
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 24.0),
+                                      child: LoginField(
+                                        'Password',
+                                        InkWell(
+                                          onTap: () {
+                                            setState(() {
+                                              _isHidden = !_isHidden;
+                                            });
+                                          },
+                                          child: Icon(
+                                              _isHidden
+                                                  ? Icons.visibility_outlined
+                                                  : Icons
+                                                      .visibility_off_outlined,
+                                              color: kCastelon),
+                                        ),
+                                        _isHidden,
+                                        (value) {
+                                          _password = value;
+                                        },
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 32.0),
+                                      child: Row(
+                                        children: [
+                                          Checkbox(
+                                            activeColor: kCastelon,
+                                            value: _staySigned,
+                                            onChanged: (value) {
+                                              setState(() {
+                                                _staySigned = value!;
+                                              });
+                                            },
+                                            side: BorderSide(
+                                              color: kCastelon,
+                                              width: 2,
+                                            ),
+                                          ),
+                                          Text(
+                                            "Keep me signed in",
+                                            style: TextStyle(color: kMatte),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 32.0),
+                                      child: Container(
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        child: ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            primary: kCastelon,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                          ),
+                                          onPressed: () {},
+                                          child: Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                vertical: 12.0),
+                                            child: Text(
+                                              'Next',
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .button!
+                                                  .copyWith(color: kGlacier),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 32.0),
+                                      child: Container(
+                                        alignment: Alignment.centerRight,
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsets.only(right: 6.0),
+                                          child: TextButton(
+                                            onPressed: () {},
+                                            child: Text(
+                                              "Forgot Password",
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .button!
+                                                  .copyWith(color: kMatte),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          Center(
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 32.0),
+                              child: TextButton(
+                                onPressed: () {
+                                  //TODO: Implement attribution page
+                                },
+                                child: Text(
+                                  "© 2021. Amrita Vishwa Vidyapeetham.",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .overline!
+                                      .copyWith(color: kMatte),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 );
               }
             },
