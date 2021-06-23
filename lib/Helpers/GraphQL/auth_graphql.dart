@@ -37,4 +37,44 @@ extension Graph on GraphQLClient {
       errorPolicy: ErrorPolicy.all,
     ));
   }
+
+  Future queryCFA(String query) {
+    final String readCharacter = query;
+    return this.query(QueryOptions(
+      document: gql(readCharacter),
+      fetchPolicy: FetchPolicy.cacheFirst,
+      errorPolicy: ErrorPolicy.all,
+      cacheRereadPolicy: CacheRereadPolicy.mergeOptimistic,
+    ));
+  }
+
+  Future mutationCFA(String query) {
+    final String readCharacter = query;
+    return this.mutate(MutationOptions(
+      document: gql(readCharacter),
+      fetchPolicy: FetchPolicy.cacheFirst,
+      errorPolicy: ErrorPolicy.all,
+      cacheRereadPolicy: CacheRereadPolicy.mergeOptimistic,
+    ));
+  }
+
+  Future queryCNA(String query) {
+    final String readCharacter = query;
+    return this.query(QueryOptions(
+      document: gql(readCharacter),
+      fetchPolicy: FetchPolicy.cacheAndNetwork,
+      errorPolicy: ErrorPolicy.all,
+      cacheRereadPolicy: CacheRereadPolicy.mergeOptimistic,
+    ));
+  }
+
+  Future mutationCNA(String query) {
+    final String readCharacter = query;
+    return this.mutate(MutationOptions(
+      document: gql(readCharacter),
+      fetchPolicy: FetchPolicy.cacheAndNetwork,
+      errorPolicy: ErrorPolicy.all,
+      cacheRereadPolicy: CacheRereadPolicy.mergeOptimistic,
+    ));
+  }
 }
