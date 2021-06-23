@@ -26,7 +26,6 @@ extension Graph on GraphQLClient {
       document: gql(readCharacter),
       fetchPolicy: FetchPolicy.noCache,
       errorPolicy: ErrorPolicy.all,
-      cacheRereadPolicy: CacheRereadPolicy.mergeOptimistic,
     ));
   }
 
@@ -36,7 +35,6 @@ extension Graph on GraphQLClient {
       document: gql(readCharacter),
       fetchPolicy: FetchPolicy.cacheFirst,
       errorPolicy: ErrorPolicy.all,
-      cacheRereadPolicy: CacheRereadPolicy.mergeOptimistic,
     ));
   }
 
@@ -46,7 +44,6 @@ extension Graph on GraphQLClient {
       document: gql(readCharacter),
       fetchPolicy: FetchPolicy.cacheFirst,
       errorPolicy: ErrorPolicy.all,
-      cacheRereadPolicy: CacheRereadPolicy.mergeOptimistic,
     ));
   }
 
@@ -56,7 +53,6 @@ extension Graph on GraphQLClient {
       document: gql(readCharacter),
       fetchPolicy: FetchPolicy.cacheAndNetwork,
       errorPolicy: ErrorPolicy.all,
-      cacheRereadPolicy: CacheRereadPolicy.mergeOptimistic,
     ));
   }
 
@@ -66,7 +62,6 @@ extension Graph on GraphQLClient {
       document: gql(readCharacter),
       fetchPolicy: FetchPolicy.cacheAndNetwork,
       errorPolicy: ErrorPolicy.all,
-      cacheRereadPolicy: CacheRereadPolicy.mergeOptimistic,
     ));
   }
 }
