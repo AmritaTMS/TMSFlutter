@@ -6,7 +6,8 @@ class LoginField extends StatelessWidget {
   final Widget icon;
   final bool isHidden;
   final Function(String) changeVal;
-  LoginField(this.text, this.icon, this.isHidden, this.changeVal);
+  final String? Function(String?) valid;
+  LoginField(this.text, this.icon, this.isHidden, this.changeVal, this.valid);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,6 @@ class LoginField extends StatelessWidget {
       cursorColor: kCastelon,
       onChanged: changeVal,
       decoration: InputDecoration(
-        //TODO: Error border and error color
         filled: true,
         fillColor: kGlacier,
         focusedBorder: OutlineInputBorder(
@@ -26,10 +26,14 @@ class LoginField extends StatelessWidget {
         border: OutlineInputBorder(
             borderSide: BorderSide(color: kCamblue, width: 2),
             borderRadius: BorderRadius.all(Radius.circular(8.0))),
+        errorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: kRed, width: 2),
+            borderRadius: BorderRadius.all(Radius.circular(8.0))),
         hintText: text,
         labelStyle: TextStyle(color: kMatte),
         suffixIcon: icon,
       ),
+      validator: valid,
       obscureText: !isHidden,
     );
   }
