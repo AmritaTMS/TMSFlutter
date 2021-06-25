@@ -642,7 +642,7 @@ class _LoginScreenState extends State<LoginScreen>
                                           },
                                           child: Padding(
                                             padding: EdgeInsets.symmetric(
-                                                vertical: 12.0),
+                                                vertical: 16.0),
                                             child: Text(
                                               'Next',
                                               style: Theme.of(context)
