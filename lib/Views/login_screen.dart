@@ -170,7 +170,7 @@ class _LoginScreenState extends State<LoginScreen>
                                                   },
                                                   (_username) {
                                                     if (_username!.isEmpty) {
-                                                      return '* Please enter a username';
+                                                      return 'Please enter a username';
                                                     }
                                                   },
                                                 ),
@@ -204,7 +204,7 @@ class _LoginScreenState extends State<LoginScreen>
                                                   },
                                                   (_password) {
                                                     if (_password!.isEmpty) {
-                                                      return '* Please enter a password';
+                                                      return 'Please enter a password';
                                                     }
                                                   },
                                                 ),
@@ -378,7 +378,7 @@ class _LoginScreenState extends State<LoginScreen>
                                           },
                                           (_username) {
                                             if (_username!.isEmpty) {
-                                              return '* Please enter a username';
+                                              return 'Please enter a username';
                                             }
                                           },
                                         ),
@@ -410,7 +410,7 @@ class _LoginScreenState extends State<LoginScreen>
                                           },
                                           (_password) {
                                             if (_password!.isEmpty) {
-                                              return '* Please enter a password';
+                                              return 'Please enter a password';
                                             }
                                           },
                                         ),
@@ -562,7 +562,7 @@ class _LoginScreenState extends State<LoginScreen>
                                         },
                                         (_username) {
                                           if (_username!.isEmpty) {
-                                            return '* Please enter a username';
+                                            return 'Please enter a username';
                                           }
                                         },
                                       ),
@@ -593,7 +593,7 @@ class _LoginScreenState extends State<LoginScreen>
                                         },
                                         (_password) {
                                           if (_password!.isEmpty) {
-                                            return '* Please enter a password';
+                                            return 'Please enter a password';
                                           }
                                         },
                                       ),
