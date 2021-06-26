@@ -11,5 +11,5 @@ const Color kCamblue = Color(0xFF94C4B2);
 const Color kCastelon = Color(0xFF055840);
 
 const Color kRed = Color(0xFFFF8170);
-const Color kMikado = Color(0xFFFFC10D);
+const Color kMikado = Color(0x50FFC10D);
 const Color kMatte = Color(0xFF333333); //can change Black color
