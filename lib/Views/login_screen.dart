@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tms/Views/fac_base.dart';
 import 'package:tms/constants.dart';
 import 'package:tms/Widgets/login_field.dart';
 
@@ -64,6 +65,7 @@ class _LoginScreenState extends State<LoginScreen>
                 onPressed: () {
                   //TODO:Logic to launch Intranet
                 },
+                style: TextButton.styleFrom(primary: kMikado),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: Text(
@@ -170,7 +172,7 @@ class _LoginScreenState extends State<LoginScreen>
                                                   },
                                                   (_username) {
                                                     if (_username!.isEmpty) {
-                                                      return '* Please enter a username';
+                                                      return 'Please enter a username';
                                                     }
                                                   },
                                                 ),
@@ -204,7 +206,7 @@ class _LoginScreenState extends State<LoginScreen>
                                                   },
                                                   (_password) {
                                                     if (_password!.isEmpty) {
-                                                      return '* Please enter a password';
+                                                      return 'Please enter a password';
                                                     }
                                                   },
                                                 ),
@@ -249,15 +251,26 @@ class _LoginScreenState extends State<LoginScreen>
                                                               left: 6.0),
                                                       child: TextButton(
                                                         onPressed: () {},
-                                                        child: Text(
-                                                          "Forgot Password",
-                                                          style: Theme.of(
-                                                                  context)
-                                                              .textTheme
-                                                              .button!
-                                                              .copyWith(
-                                                                  color:
-                                                                      kMatte),
+                                                        style: TextButton
+                                                            .styleFrom(
+                                                                primary:
+                                                                    kMikado),
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .symmetric(
+                                                                  vertical:
+                                                                      12.0),
+                                                          child: Text(
+                                                            "Forgot Password",
+                                                            style: Theme.of(
+                                                                    context)
+                                                                .textTheme
+                                                                .button!
+                                                                .copyWith(
+                                                                    color:
+                                                                        kMatte),
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
@@ -278,6 +291,14 @@ class _LoginScreenState extends State<LoginScreen>
                                                           _formKey.currentState!
                                                               .validate();
                                                         });
+                                                        Navigator
+                                                            .pushReplacement(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder:
+                                                                  (context) =>
+                                                                      FacBase()),
+                                                        );
                                                       },
                                                       child: Padding(
                                                         padding:
@@ -378,7 +399,7 @@ class _LoginScreenState extends State<LoginScreen>
                                           },
                                           (_username) {
                                             if (_username!.isEmpty) {
-                                              return '* Please enter a username';
+                                              return 'Please enter a username';
                                             }
                                           },
                                         ),
@@ -410,7 +431,7 @@ class _LoginScreenState extends State<LoginScreen>
                                           },
                                           (_password) {
                                             if (_password!.isEmpty) {
-                                              return '* Please enter a password';
+                                              return 'Please enter a password';
                                             }
                                           },
                                         ),
@@ -452,12 +473,20 @@ class _LoginScreenState extends State<LoginScreen>
                                                   left: 6.0),
                                               child: TextButton(
                                                 onPressed: () {},
-                                                child: Text(
-                                                  "Forgot Password",
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .button!
-                                                      .copyWith(color: kMatte),
+                                                style: TextButton.styleFrom(
+                                                    primary: kMikado),
+                                                child: Padding(
+                                                  padding: const EdgeInsets
+                                                          .symmetric(
+                                                      vertical: 12.0),
+                                                  child: Text(
+                                                    "Forgot Password",
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .button!
+                                                        .copyWith(
+                                                            color: kMatte),
+                                                  ),
                                                 ),
                                               ),
                                             ),
@@ -475,6 +504,12 @@ class _LoginScreenState extends State<LoginScreen>
                                                   _formKey.currentState!
                                                       .validate();
                                                 });
+                                                Navigator.pushReplacement(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          FacBase()),
+                                                );
                                               },
                                               child: Padding(
                                                 padding:
@@ -562,7 +597,7 @@ class _LoginScreenState extends State<LoginScreen>
                                         },
                                         (_username) {
                                           if (_username!.isEmpty) {
-                                            return '* Please enter a username';
+                                            return 'Please enter a username';
                                           }
                                         },
                                       ),
@@ -593,7 +628,7 @@ class _LoginScreenState extends State<LoginScreen>
                                         },
                                         (_password) {
                                           if (_password!.isEmpty) {
-                                            return '* Please enter a password';
+                                            return 'Please enter a password';
                                           }
                                         },
                                       ),
@@ -639,6 +674,12 @@ class _LoginScreenState extends State<LoginScreen>
                                             setState(() {
                                               _formKey.currentState!.validate();
                                             });
+                                            Navigator.pushReplacement(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      FacBase()),
+                                            );
                                           },
                                           child: Padding(
                                             padding: EdgeInsets.symmetric(
@@ -663,12 +704,19 @@ class _LoginScreenState extends State<LoginScreen>
                                               const EdgeInsets.only(right: 6.0),
                                           child: TextButton(
                                             onPressed: () {},
-                                            child: Text(
-                                              "Forgot Password",
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .button!
-                                                  .copyWith(color: kMatte),
+                                            style: TextButton.styleFrom(
+                                                primary: kMikado),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 12.0),
+                                              child: Text(
+                                                "Forgot Password",
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .button!
+                                                    .copyWith(color: kMatte),
+                                              ),
                                             ),
                                           ),
                                         ),
