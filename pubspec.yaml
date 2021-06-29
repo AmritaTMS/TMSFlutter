@@ -25,10 +25,12 @@ dependencies:
     sdk: flutter
   animations: ^2.0.0
   cupertino_icons: ^1.0.2
+  desktop_window: ^0.4.0
   google_fonts: ^2.1.0
   graphql: ^5.0.0
   hive: ^2.0.4
   provider: ^5.0.0
+  universal_html: ^2.0.8
 
 dev_dependencies:
   flutter_test:

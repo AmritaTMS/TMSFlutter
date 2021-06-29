@@ -16,6 +16,7 @@ class _LoginScreenState extends State<LoginScreen>
   bool _isHidden = false, _staySigned = true;
   String _username = '', _password = '';
   final _formKey = GlobalKey<FormState>();
+  AutovalidateMode _autoValidate = AutovalidateMode.disabled;
 
   @override
   void initState() {
@@ -42,6 +43,46 @@ class _LoginScreenState extends State<LoginScreen>
   void dispose() {
     animation.dispose();
     super.dispose();
+  }
+
+  void loginbutton() {
+    //TODO: Actual Login feature
+    setState(() {
+      _autoValidate = AutovalidateMode.always;
+    });
+    if (_formKey.currentState!.validate() &&
+        _username == "trial" &&
+        _password == 'trial')
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => FacBase()),
+      );
+    else if (_formKey.currentState!.validate()) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+            behavior: SnackBarBehavior.floating,
+            duration: Duration(seconds: 7),
+            action: SnackBarAction(
+              label: 'Forgot Password',
+              textColor: kGlacier,
+              disabledTextColor: kFrost,
+              onPressed: () {},
+            ),
+            elevation: 2,
+            backgroundColor: kMatte,
+            content: Text(
+              'Sorry, we couldn\'t find an account with that username or password. Please try again.',
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyText1!
+                  .copyWith(color: kGlacier),
+            )),
+      );
+    }
+  }
+
+  void forgotPasswordButton() {
+    //TODO: Actual Forgot Password Logic
   }
 
   @override
@@ -142,6 +183,7 @@ class _LoginScreenState extends State<LoginScreen>
                                             vertical: 48.0, horizontal: 32.0),
                                         child: Form(
                                           key: _formKey,
+                                          autovalidateMode: _autoValidate,
                                           child: Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
@@ -164,10 +206,6 @@ class _LoginScreenState extends State<LoginScreen>
                                                       color: kCastelon),
                                                   true,
                                                   (value) {
-                                                    setState(() {
-                                                      _formKey.currentState!
-                                                          .validate();
-                                                    });
                                                     _username = value;
                                                   },
                                                   (_username) {
@@ -175,41 +213,38 @@ class _LoginScreenState extends State<LoginScreen>
                                                       return 'Please enter a username';
                                                     }
                                                   },
+                                                  (val) {},
                                                 ),
                                               ),
                                               Padding(
                                                 padding: const EdgeInsets.only(
                                                     top: 24.0),
                                                 child: LoginField(
-                                                  'Password',
-                                                  InkWell(
-                                                    onTap: () {
-                                                      setState(() {
-                                                        _isHidden = !_isHidden;
-                                                      });
-                                                    },
-                                                    child: Icon(
-                                                        _isHidden
-                                                            ? Icons
-                                                                .visibility_outlined
-                                                            : Icons
-                                                                .visibility_off_outlined,
-                                                        color: kCastelon),
-                                                  ),
-                                                  _isHidden,
-                                                  (value) {
-                                                    setState(() {
-                                                      _formKey.currentState!
-                                                          .validate();
-                                                    });
-                                                    _password = value;
-                                                  },
-                                                  (_password) {
-                                                    if (_password!.isEmpty) {
-                                                      return 'Please enter a password';
-                                                    }
-                                                  },
-                                                ),
+                                                    'Password',
+                                                    InkWell(
+                                                      onTap: () {
+                                                        setState(() {
+                                                          _isHidden =
+                                                              !_isHidden;
+                                                        });
+                                                      },
+                                                      child: Icon(
+                                                          _isHidden
+                                                              ? Icons
+                                                                  .visibility_outlined
+                                                              : Icons
+                                                                  .visibility_off_outlined,
+                                                          color: kCastelon),
+                                                    ),
+                                                    _isHidden, (value) {
+                                                  _password = value;
+                                                }, (_password) {
+                                                  if (_password!.isEmpty) {
+                                                    return 'Please enter a password';
+                                                  }
+                                                }, (val) {
+                                                  loginbutton();
+                                                }),
                                               ),
                                               Padding(
                                                 padding: const EdgeInsets.only(
@@ -287,18 +322,7 @@ class _LoginScreenState extends State<LoginScreen>
                                                         ),
                                                       ),
                                                       onPressed: () {
-                                                        setState(() {
-                                                          _formKey.currentState!
-                                                              .validate();
-                                                        });
-                                                        Navigator
-                                                            .pushReplacement(
-                                                          context,
-                                                          MaterialPageRoute(
-                                                              builder:
-                                                                  (context) =>
-                                                                      FacBase()),
-                                                        );
+                                                        loginbutton();
                                                       },
                                                       child: Padding(
                                                         padding:
@@ -392,9 +416,6 @@ class _LoginScreenState extends State<LoginScreen>
                                               color: kCastelon),
                                           true,
                                           (value) {
-                                            setState(() {
-                                              _formKey.currentState!.validate();
-                                            });
                                             _username = value;
                                           },
                                           (_username) {
@@ -402,6 +423,7 @@ class _LoginScreenState extends State<LoginScreen>
                                               return 'Please enter a username';
                                             }
                                           },
+                                          (val) {},
                                         ),
                                       ),
                                       Padding(
@@ -424,15 +446,15 @@ class _LoginScreenState extends State<LoginScreen>
                                           ),
                                           _isHidden,
                                           (value) {
-                                            setState(() {
-                                              _formKey.currentState!.validate();
-                                            });
                                             _password = value;
                                           },
                                           (_password) {
                                             if (_password!.isEmpty) {
                                               return 'Please enter a password';
                                             }
+                                          },
+                                          (val) {
+                                            loginbutton();
                                           },
                                         ),
                                       ),
@@ -500,16 +522,7 @@ class _LoginScreenState extends State<LoginScreen>
                                                 ),
                                               ),
                                               onPressed: () {
-                                                setState(() {
-                                                  _formKey.currentState!
-                                                      .validate();
-                                                });
-                                                Navigator.pushReplacement(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          FacBase()),
-                                                );
+                                                loginbutton();
                                               },
                                               child: Padding(
                                                 padding:
@@ -590,9 +603,6 @@ class _LoginScreenState extends State<LoginScreen>
                                             color: kCastelon),
                                         true,
                                         (value) {
-                                          setState(() {
-                                            _formKey.currentState!.validate();
-                                          });
                                           _username = value;
                                         },
                                         (_username) {
@@ -600,6 +610,7 @@ class _LoginScreenState extends State<LoginScreen>
                                             return 'Please enter a username';
                                           }
                                         },
+                                        (val) {},
                                       ),
                                     ),
                                     Padding(
@@ -621,15 +632,15 @@ class _LoginScreenState extends State<LoginScreen>
                                         ),
                                         _isHidden,
                                         (value) {
-                                          setState(() {
-                                            _formKey.currentState!.validate();
-                                          });
                                           _password = value;
                                         },
                                         (_password) {
                                           if (_password!.isEmpty) {
                                             return 'Please enter a password';
                                           }
+                                        },
+                                        (val) {
+                                          loginbutton();
                                         },
                                       ),
                                     ),
@@ -671,15 +682,7 @@ class _LoginScreenState extends State<LoginScreen>
                                             ),
                                           ),
                                           onPressed: () {
-                                            setState(() {
-                                              _formKey.currentState!.validate();
-                                            });
-                                            Navigator.pushReplacement(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      FacBase()),
-                                            );
+                                            loginbutton();
                                           },
                                           child: Padding(
                                             padding: EdgeInsets.symmetric(
