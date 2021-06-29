@@ -5,9 +5,10 @@ class LoginField extends StatelessWidget {
   final String text;
   final Widget icon;
   final bool isHidden;
-  final Function(String) changeVal;
+  final Function(String) changeVal, onfield;
   final String? Function(String?) valid;
-  LoginField(this.text, this.icon, this.isHidden, this.changeVal, this.valid);
+  LoginField(this.text, this.icon, this.isHidden, this.changeVal, this.valid,
+      this.onfield);
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +35,8 @@ class LoginField extends StatelessWidget {
         suffixIcon: icon,
       ),
       validator: valid,
+      textInputAction: TextInputAction.next,
+      onFieldSubmitted: onfield,
       obscureText: !isHidden,
     );
   }

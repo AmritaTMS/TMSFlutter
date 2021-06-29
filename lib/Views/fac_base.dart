@@ -1,14 +1,33 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tms/constants.dart';
-import 'package:tms/Widgets/login_field.dart';
+import 'package:universal_html/html.dart' as uh;
+import 'package:desktop_window/desktop_window.dart';
+
+import 'dart:io' show Platform;
 
 class FacBase extends StatefulWidget {
   @override
   _FacBaseState createState() => _FacBaseState();
 }
 
+void goFullScreen() async {
+  //website or Desktop only feature... Full screen mode
+  if (kIsWeb)
+    uh.document.documentElement!.requestFullscreen();
+  else if (Platform.isWindows) {
+    await DesktopWindow.toggleFullScreen();
+  }
+}
+
 class _FacBaseState extends State<FacBase> {
   int _selectedDestination = 0;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     void selectDestination(int index) {
