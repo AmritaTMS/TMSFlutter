@@ -577,12 +577,12 @@ class _LoginScreenState extends State<LoginScreen>
                     constraints: BoxConstraints(maxWidth: 500, maxHeight: 810),
                     child: SingleChildScrollView(
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Center(
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  vertical: 48.0, horizontal: 32.0),
+                                  vertical: 48.0, horizontal: 24.0),
                               child: Form(
                                 key: _formKey,
                                 child: Column(
@@ -702,24 +702,19 @@ class _LoginScreenState extends State<LoginScreen>
                                       padding: const EdgeInsets.only(top: 32.0),
                                       child: Container(
                                         alignment: Alignment.centerRight,
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsets.only(right: 6.0),
-                                          child: TextButton(
-                                            onPressed: () {},
-                                            style: TextButton.styleFrom(
-                                                primary: kMikado),
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      vertical: 12.0),
-                                              child: Text(
-                                                "Forgot Password",
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .button!
-                                                    .copyWith(color: kMatte),
-                                              ),
+                                        child: TextButton(
+                                          onPressed: () {},
+                                          style: TextButton.styleFrom(
+                                              primary: kMikado),
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                vertical: 12.0),
+                                            child: Text(
+                                              "Forgot Password",
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .button!
+                                                  .copyWith(color: kMatte),
                                             ),
                                           ),
                                         ),

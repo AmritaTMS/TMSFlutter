@@ -65,6 +65,7 @@ class _FacBaseState extends State<FacBase> {
                           : kGlacier),
                 ),
               ),
+              //TODO: ADD FACULTY STUFF HERE
               Container(
                 height: 162,
                 width: 304,
@@ -134,7 +135,9 @@ class _FacBaseState extends State<FacBase> {
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    //TODO: Sign Out logic here....
+                  },
                   child: Padding(
                     padding: EdgeInsets.symmetric(vertical: 16.0),
                     child: Text(

@@ -15,6 +15,7 @@ class LoginField extends StatelessWidget {
     return TextFormField(
       cursorColor: kCastelon,
       onChanged: changeVal,
+      style: Theme.of(context).textTheme.bodyText1,
       decoration: InputDecoration(
         filled: true,
         fillColor: kGlacier,
