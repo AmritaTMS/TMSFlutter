@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.tms">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="tms"
+        android:label="TMS"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
