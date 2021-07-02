@@ -4,7 +4,7 @@ import 'package:tms/Views/login_screen.dart';
 import 'package:tms/constants.dart';
 import 'package:universal_html/html.dart' as uh;
 import 'package:desktop_window/desktop_window.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 import 'dart:io' show Platform;
 
 class FacBase extends StatefulWidget {
@@ -44,6 +44,7 @@ class _FacBaseState extends State<FacBase> {
       });
     }
 
+    var regular;
     Widget navdraw = Theme(
       data: Theme.of(context).copyWith(
         canvasColor: kGlacier,
@@ -75,14 +76,101 @@ class _FacBaseState extends State<FacBase> {
               ),
               //TODO: ADD FACULTY STUFF HERE
               Container(
-                height: 162,
-                width: 304,
+                child: Container(
+                  margin: EdgeInsets.only(left: 5.0),
+                  // padding: EdgeInsets.only(left: 5.0),
+                  height: MediaQuery.of(context).size.height / 4,
+                  width: MediaQuery.of(context).size.width / 4,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Row(
+                        children: [
+                          CircleAvatar(
+                            radius: 45,
+                            backgroundColor: Color(0xffFDCF09),
+                            child: CircleAvatar(
+                              radius: 42,
+                              backgroundImage: AssetImage('images/faculty.jpg'),
+                            ),
+                          ),
+                          SizedBox(width: 130),
+                          Stack(
+                            children: <Widget>[
+                              new Icon(Icons.notifications),
+                              new Positioned(
+                                right: 0,
+                                child: new Container(
+                                  padding: EdgeInsets.all(1),
+                                  decoration: new BoxDecoration(
+                                    color: Colors.green,
+                                    borderRadius: BorderRadius.circular(6),
+                                  ),
+                                  constraints: BoxConstraints(
+                                    minWidth: 12,
+                                    minHeight: 12,
+                                  ),
+                                  child: new Text(
+                                    //TODO: Need to give the actual notification count
+                                    '2',
+                                    style: new TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 8,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                          // Icon(
+                          //   Icons.notifications_active,
+                          //   color: Colors.black,
+                          //   size: 24.0,
+                          //   semanticLabel:
+                          //       'Text to announce in accessibility modes',
+                          // ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            'ARUN KUMAR JI',
+                            textAlign: TextAlign.left,
+                            style: GoogleFonts.roboto(
+                              textStyle: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                  letterSpacing: .2),
+                            ),
+                          ),
+                        ],
+                      ),
+                      //TODO: Fetch Faculty Name in $var format
+                      Row(
+                        children: [
+                          Text(
+                            'Faculty',
+                            style: GoogleFonts.openSans(
+                              textStyle: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                  letterSpacing: .2),
+                            ),
+                          ),
+                        ],
+                      ),
+                      //TODO: Fetch Faculty Role in $var format
+                    ],
+                  ),
+                ),
                 color: kFrost,
                 padding:
                     const EdgeInsets.symmetric(horizontal: 24, vertical: 16.0),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
+                padding: const EdgeInsets.fromLTRB(8, 12, 8, 8),
                 child: ListTile(
                   leading: Icon(Icons.home),
                   title: Text(
