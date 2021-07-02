@@ -21,6 +21,13 @@ void goFullScreen() async {
   }
 }
 
+void signout(context) {
+  Navigator.pushReplacement(
+    context,
+    MaterialPageRoute(builder: (context) => LoginScreen()),
+  );
+}
+
 class _FacBaseState extends State<FacBase> {
   int _selectedDestination = 0;
   @override
@@ -138,10 +145,7 @@ class _FacBaseState extends State<FacBase> {
                   ),
                   onPressed: () {
                     //TODO: Sign Out logic here....
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => LoginScreen()),
-                    );
+                    signout(context);
                   },
                   child: Padding(
                     padding: EdgeInsets.symmetric(vertical: 16.0),
