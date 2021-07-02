@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:tms/Views/login_screen.dart';
 import 'package:tms/constants.dart';
 import 'package:universal_html/html.dart' as uh;
 import 'package:desktop_window/desktop_window.dart';
@@ -137,6 +138,10 @@ class _FacBaseState extends State<FacBase> {
                   ),
                   onPressed: () {
                     //TODO: Sign Out logic here....
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginScreen()),
+                    );
                   },
                   child: Padding(
                     padding: EdgeInsets.symmetric(vertical: 16.0),
