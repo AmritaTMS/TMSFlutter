@@ -574,15 +574,15 @@ class _LoginScreenState extends State<LoginScreen>
                 return Align(
                   alignment: Alignment.center,
                   child: Container(
-                    constraints: BoxConstraints(maxWidth: 500, maxHeight: 810),
-                    child: SingleChildScrollView(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Center(
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 48.0, horizontal: 24.0),
+                    constraints: BoxConstraints(maxWidth: 500, maxHeight: 600),
+                    child: Center(
+                      child: SingleChildScrollView(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 24.0),
                               child: Form(
                                 key: _formKey,
                                 child: Column(
@@ -724,9 +724,7 @@ class _LoginScreenState extends State<LoginScreen>
                                 ),
                               ),
                             ),
-                          ),
-                          Center(
-                            child: Padding(
+                            Padding(
                               padding: const EdgeInsets.only(top: 32.0),
                               child: TextButton(
                                 onPressed: () {
@@ -741,8 +739,8 @@ class _LoginScreenState extends State<LoginScreen>
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),

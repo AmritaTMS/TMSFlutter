@@ -1,3 +1,8 @@
+  <picture id="splash">
+    <source srcset="splash/img/light-1x.png 1x, splash/img/light-2x.png 2x, splash/img/light-3x.png 3x" media="(prefers-color-scheme: light) or (prefers-color-scheme: no-preference)">
+    <source srcset="splash/img/dark-1x.png 1x, splash/img/dark-2x.png 2x, splash/img/dark-3x.png 3x" media="(prefers-color-scheme: dark)">
+    <img class="center" src="splash/img/light-1x.png" />
+  </picture>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,9 +39,12 @@
   <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="96x96" href="icons/favicon-96x96.png">
   <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
-
+  
+  <link rel="icon" type="image/png" href="favicon.png"/>
+  
   <title>TMS | Timesheet Management System for Institutions.</title>
   <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" type="text/css" href="splash/style.css">
 </head>
 <body>
   <!-- This script installs service_worker.js to provide PWA functionality to

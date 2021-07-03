@@ -12,28 +12,35 @@ class FacBase extends StatefulWidget {
   _FacBaseState createState() => _FacBaseState();
 }
 
-void goFullScreen() async {
-  //website or Desktop only feature... Full screen mode
-  if (kIsWeb)
-    uh.document.documentElement!.requestFullscreen();
-  else if (Platform.isWindows) {
-    await DesktopWindow.toggleFullScreen();
-  }
-}
-
-void signout(context) {
-  Navigator.pushReplacement(
-    context,
-    MaterialPageRoute(builder: (context) => LoginScreen()),
-  );
-}
-
 class _FacBaseState extends State<FacBase> {
   int _selectedDestination = 0;
+  GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+  }
+
+  void closeDrawer() {
+    if (_scaffoldKey.currentState!.isDrawerOpen) {
+      _scaffoldKey.currentState!.openEndDrawer();
+    }
+  }
+
+  void goFullScreen() async {
+    //website or Desktop only feature... Full screen mode
+    if (kIsWeb)
+      uh.document.documentElement!.requestFullscreen();
+    else if (Platform.isWindows) {
+      await DesktopWindow.toggleFullScreen();
+    }
+  }
+
+  void signout(context) {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => LoginScreen()),
+    );
   }
 
   @override
@@ -63,24 +70,91 @@ class _FacBaseState extends State<FacBase> {
             padding: EdgeInsets.zero,
             children: <Widget>[
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 24, vertical: 16.0),
-                child: Text(
-                  "TMS",
-                  style: Theme.of(context).textTheme.headline5!.copyWith(
-                      color: MediaQuery.of(context).size.width > 1239
-                          ? kCastelon
-                          : kGlacier),
-                ),
+                padding: MediaQuery.of(context).size.width > 1239
+                    ? const EdgeInsets.symmetric(horizontal: 24, vertical: 12.0)
+                    : const EdgeInsets.symmetric(horizontal: 32, vertical: 8.0),
+                child: MediaQuery.of(context).size.width > 1239
+                    ? Text(
+                        "TMS",
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline5!
+                            .copyWith(color: kCastelon),
+                      )
+                    : Align(
+                        alignment: Alignment.centerRight,
+                        child: IconButton(
+                            onPressed: () {
+                              closeDrawer();
+                            },
+                            icon: Icon(
+                              Icons.close,
+                              color: kCastelon,
+                            )),
+                      ),
               ),
-              //TODO: ADD FACULTY STUFF HERE
               Container(
-                height: 162,
-                width: 304,
-                color: kFrost,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 24, vertical: 16.0),
-              ),
+                  height: 162,
+                  width: 304,
+                  color: kFrost,
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 24, vertical: 16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CircleAvatar(
+                            minRadius: 24,
+                            maxRadius: 32,
+                            backgroundColor: kFrost,
+                            backgroundImage: NetworkImage(
+                              'https://www.amrita.edu/sites/default/files/styles/260x160/adaptive-image/public/faculty_images/arunkumar-c_0.jpg?itok=mIIefNuq',
+                            ),
+                          ),
+                          Card(
+                            elevation: 0,
+                            color: kGreen,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 4.0, horizontal: 12.0),
+                              child: Row(
+                                children: [
+                                  Text("7",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyText1!
+                                          .copyWith(color: kGlacier)),
+                                  SizedBox(width: 8),
+                                  Icon(
+                                    Icons.notifications_active,
+                                    color: kGlacier,
+                                    size: 16,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "ARUN KUMAR",
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText1!
+                                .copyWith(fontWeight: FontWeight.bold),
+                          ),
+                          Text("Faculty"),
+                        ],
+                      ),
+                    ],
+                  )),
               Padding(
                 padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
                 child: ListTile(
@@ -144,7 +218,6 @@ class _FacBaseState extends State<FacBase> {
                     ),
                   ),
                   onPressed: () {
-                    //TODO: Sign Out logic here....
                     signout(context);
                   },
                   child: Padding(
@@ -203,6 +276,7 @@ class _FacBaseState extends State<FacBase> {
             );
           else
             return Scaffold(
+              key: _scaffoldKey,
               appBar: AppBar(
                 elevation: 2,
                 title: Text(

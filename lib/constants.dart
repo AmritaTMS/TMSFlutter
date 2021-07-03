@@ -12,4 +12,7 @@ const Color kCastelon = Color(0xFF055840);
 
 const Color kRed = Color(0xFFFF8170);
 const Color kMikado = Color(0x50FFC10D);
+const Color kGreen = Color(0xFF03B13E);
 const Color kMatte = Color(0xFF333333); //can change Black color
+
+
