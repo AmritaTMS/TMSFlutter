@@ -104,7 +104,7 @@ class _LoginScreenState extends State<LoginScreen>
             actions: [
               TextButton(
                 onPressed: () {
-                  //TODO:Logic to launch Intranet
+                  //TODO:Logic to launch Intranet Url Launcher
                 },
                 style: TextButton.styleFrom(primary: kMikado),
                 child: Padding(
